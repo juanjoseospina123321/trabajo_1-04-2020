@@ -11,6 +11,7 @@ import com.listase.modelo.Nodo;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.primefaces.model.diagram.Connection;
@@ -53,10 +54,10 @@ public class SesionInfante implements Serializable {
     {
         listaInfantes = new ListaSE();        
         //LLenado de la bds
-        listaInfantes.adicionarNodo(new Infante("Carlitos",(short) 1, (byte)2));
-        listaInfantes.adicionarNodo(new Infante("Juanita",(short) 2, (byte)3));
-        listaInfantes.adicionarNodo(new Infante("Martina",(short) 3, (byte)1));
-        listaInfantes.adicionarNodoAlInicio(new Infante("Mariana",(short) 4, (byte)5));
+        listaInfantes.adicionarNodo(new Infante("Carlitos",(short) 1,(short) 1, (byte)2));
+        listaInfantes.adicionarNodo(new Infante("Juanita",(short) 0,(short) 2, (byte)3));
+        listaInfantes.adicionarNodo(new Infante("Martina",(short) 0,(short) 3, (byte)1));
+        listaInfantes.adicionarNodoAlInicio(new Infante("Mariana",(short) 0,(short) 4, (byte)5));
         ayudante = listaInfantes.getCabeza();
         infante = ayudante.getDato();     
         //Me llena el objeto List para la tabla
@@ -229,6 +230,12 @@ public class SesionInfante implements Serializable {
             }
             infante=ayudante.getDato();
         }
+    }
+    
+    
+    public void invertirLista()
+    {
+            Collections.reverse(listadoInfantes);
     }
     
     public void cambiarVistaInfantes()

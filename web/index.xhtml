@@ -51,14 +51,26 @@
                             <p:outputLabel for="spEdad" value="Edad"/>
                             <p:spinner id="spEdad" required="true" min="1" max="7" disabled="#{sesionInfante.deshabilitarFormulario}"
                                        value="#{sesionInfante.infante.edad}"/>
+                           
                             <p:outputLabel value="Al inicio"/>
                             <p:selectOneMenu value="#{sesionInfante.alInicio}" disabled="#{sesionInfante.deshabilitarFormulario}">
                                 <f:selectItem itemLabel="SI" itemValue="1"/>
                                 <f:selectItem itemLabel="NO" itemValue="0"/>
                             </p:selectOneMenu>
+                            
+                            
+                            <p:outputLabel value="Genero"/>
+                            <p:selectOneMenu value="#{sesionInfante.infante.genero}" disabled="#{sesionInfante.deshabilitarFormulario}">
+                                <f:selectItem itemLabel="HOMBRE" itemValue="0"/>
+                                <f:selectItem itemLabel="MUJER" itemValue="1"/>
+                            </p:selectOneMenu>
+                            
+                            
                         </p:panelGrid>
                         <p:commandButton value="Guardar" update="frmInfante,:grwlErrores"
                                          action="#{sesionInfante.guardarInfante()}" disabled="#{sesionInfante.deshabilitarFormulario}"/>
+                        
+                       
                         
                         <p:commandButton value="Nuevo" update="frmInfante" action="#{sesionInfante.habilitarFormulario()}"
                                          disabled="#{!sesionInfante.deshabilitarFormulario}"
@@ -71,6 +83,8 @@
                             <p:commandButton value="Último" action="#{sesionInfante.irUltimo()}" 
                                              update="frmInfante"/>                           
                             
+                             <p:commandButton value="invertir lista" update="frmInfante"
+                                              action="#{sesionInfante.invertirLista()}" />
                             
                             
                         </p:panelGrid>
@@ -88,6 +102,14 @@
                                 </f:facet>
                                 <p:outputLabel value="#{inf.codigo}"/>
                             </p:column>
+                            
+                             <p:column>
+                                <f:facet name="header">
+                                    <p:outputLabel value="Genero"/>
+                                </f:facet>
+                                <p:outputLabel value="#{inf.genero}"/>
+                            </p:column>
+                            
                             <p:column>
                                 <f:facet name="header">
                                     <p:outputLabel value="Nombre"/>
