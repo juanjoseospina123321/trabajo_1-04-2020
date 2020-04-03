@@ -15,7 +15,22 @@ import java.util.List;
  */
 public class ListaSE implements Serializable{
     private Nodo cabeza;
+    private Infante infante;
 
+    public ListaSE(Infante infante) {
+        this.infante = infante;
+    }
+
+    public Infante getInfante() {
+        return infante;
+    }
+
+    public void setInfante(Infante infante) {
+        this.infante = infante;
+    }
+
+    
+    
     public ListaSE() {
     }
 
@@ -60,6 +75,35 @@ public class ListaSE implements Serializable{
             cabeza= temp;
         }
     }
+    
+    
+    
+    public short promedioEdad()
+    {
+        if(cabeza !=null)
+        {
+            Nodo temp= cabeza;
+            byte cont=0;
+            
+            while(temp.getSiguiente()!=null)
+            {
+                temp=temp.getSiguiente();
+                cont=(byte) (cont+infante.getEdad());
+            }
+            return cont;
+        }
+        else
+        {
+            
+            return 0;
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     public short contarNodos()
     {
